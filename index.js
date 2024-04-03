@@ -1,10 +1,13 @@
 const express = require('express');
 const cors = require("cors");
 const path = require('path');
+require('dotenv').config();
 const mongoose = require('mongoose');
+const db_link = process.env.db
+// console.log(db_link)
 // const newUpload = require('./routes/newUpload')
 // const showPhotoes = require('./routes/showPhotoes')
-mongoose.connect("mongodb://localhost:27017/heli_verse_user").then(()=>{console.log("connection done")});
+mongoose.connect(db_link).then(()=>{console.log("connection done")});
 const app = express();
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }));

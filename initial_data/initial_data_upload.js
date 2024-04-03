@@ -1,16 +1,17 @@
+require('dotenv').config();
 const mongoose = require('mongoose');
 const fs = require('fs');
 
 // Connection URI
-const uri = 'mongodb://localhost:27017/heli_verse_user';
-
+const db_link = 'mongodb+srv://umangjaiswal2003:p2geuXbIVCEQECXj@cluster0.rnbq14x.mongodb.net/heli_verse?retryWrites=true&w=majority&appName=Cluster0'
+console.log(db_link)
 // Read data from JSON file
 const data = JSON.parse(fs.readFileSync('heliverse_mock_data.json'));
 
 async function importData() {
   try {
     // Connect to MongoDB using Mongoose
-    await mongoose.connect(uri);
+    await mongoose.connect(db_link);
     console.log('Connection to MongoDB successful');
 
     // Define Mongoose schema for the collection
